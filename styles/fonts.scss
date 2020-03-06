@@ -1,0 +1,40 @@
+$fontAwesomeURL: 'https://use.fontawesome.com/releases/v5.7.0/webfonts';
+
+@font-face {
+  font-display: block;
+  font-family: "Font Awesome 5 Brands";
+  font-style: normal;
+  font-weight: normal;
+  src: url(#{$fontAwesomeURL}/fa-brands-400.eot);
+  src: url(#{$fontAwesomeURL}/fa-brands-400.eot?#iefix) format("embedded-opentype"),
+  url(#{$fontAwesomeURL}/fa-brands-400.woff2) format("woff2"),
+  url(#{$fontAwesomeURL}/fa-brands-400.woff) format("woff"),
+  url(#{$fontAwesomeURL}/fa-brands-400.ttf) format("truetype"),
+  url(#{$fontAwesomeURL}/fa-brands-400.svg#fontawesome) format("svg")
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Font Awesome 5 Free";
+  font-style: normal;
+  font-weight: 400;
+  src: url(#{$fontAwesomeURL}/fa-regular-400.eot);
+  src: url(#{$fontAwesomeURL}/fa-regular-400.eot?#iefix) format("embedded-opentype"),
+  url(#{$fontAwesomeURL}/fa-regular-400.woff2) format("woff2"),
+  url(#{$fontAwesomeURL}/fa-regular-400.woff) format("woff"),
+  url(#{$fontAwesomeURL}/fa-regular-400.ttf) format("truetype"),
+  url(#{$fontAwesomeURL}/fa-regular-400.svg#fontawesome) format("svg")
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Font Awesome 5 Free";
+  font-style: normal;
+  font-weight: 900;
+  src: url(#{$fontAwesomeURL}/fa-solid-900.eot);
+  src: url(#{$fontAwesomeURL}/fa-solid-900.eot?#iefix) format("embedded-opentype"),
+  url(#{$fontAwesomeURL}/fa-solid-900.woff2) format("woff2"),
+  url(#{$fontAwesomeURL}/fa-solid-900.woff) format("woff"),
+  url(#{$fontAwesomeURL}/fa-solid-900.ttf) format("truetype"),
+  url(#{$fontAwesomeURL}/fa-solid-900.svg#fontawesome) format("svg")
+}
