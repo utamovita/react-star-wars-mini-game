@@ -1,31 +1,27 @@
 import React from 'react';
-import { Radio, FormControl, FormLabel, RadioGroup, FormControlLabel, Button } from '@material-ui/core';
+import { Radio, FormControl, FormLabel, RadioGroup, FormControlLabel } from '@material-ui/core';
+import { useDispatch } from "react-redux";
+import { changeType, resetUnits } from '../actions';
 
-class Settings extends React.Component {
-    state = {
-        unitType: ''
+const Settings = () => {
+    const dispatch = useDispatch();
+
+    const setUnit = e => {
+        dispatch(changeType(e.target.value));
+        dispatch(resetUnits());
     }
 
-    setUnit(e) {
-        this.setState({
-            unitType: e.target.value
-        })
-    }
-
-    render() {
-        return (
-            <>
-                <FormControl className="settings-box">
-                    <FormLabel>Unit type</FormLabel>
-                    <RadioGroup onChange={this.setUnit.bind(this)}>
-                        <FormControlLabel value="starships" control={<Radio />} label="Starships" />
-                        <FormControlLabel value="people" control={<Radio />} label="People" />
-                    </RadioGroup>
-                </FormControl>
-                <Button color="secondary" variant="contained">Play!</Button>
-            </>
-        )
-    }
+    return (
+        <>
+            <FormControl className="settings-box">
+                <FormLabel>Unit type</FormLabel>
+                <RadioGroup onChange={setUnit}>
+                    <FormControlLabel value="starships" control={<Radio />} label="Starships"/>
+                    <FormControlLabel value="people" control={<Radio />} label="People" />
+                </RadioGroup>
+            </FormControl>
+        </>
+    )
 }
 
 export default Settings;
