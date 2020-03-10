@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OptionalMessage = (props) => {
+const MessageBox = (props) => {
     return (
         <div className="message">
             {props.message}
@@ -8,4 +8,4 @@ const OptionalMessage = (props) => {
     )
 }
 
-export default OptionalMessage;
+export default MessageBox;

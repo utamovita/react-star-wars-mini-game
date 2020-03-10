@@ -2,27 +2,28 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, CircularProgress } from '@material-ui/core';
 import { useSelector, useDispatch } from "react-redux";
-import { updateUnits, updateCounter } from '../actions';
-import CardUnit from './card-unit';
-import GameResult from './game-result';
-import OptionalMessage from './optional-message';
+import { updateUnits, updateScore, updateMessage, resetUnits, resetMessage } from '../actions';
+import CardUnit from './cardUnit';
+import MessageBox from './messageBox';
 
 const Battlefield = () => {
-   const unitType = useSelector(state => state.units.unitType);
-   const playerOne = useSelector(state => state.units.playerOne);
-   const playerTwo = useSelector(state => state.units.playerTwo);
+   const message = useSelector(state => state.game.message);
+   const units = useSelector(state => state.units);
    const dispatch = useDispatch();
-   let [warnMessage, setMessage] = useState('');
+
    let [isLoading, setSpinner] = useState(false);
 
    const play = () => {
-      if(!unitType) {
-         setMessage(warnMessage = 'Select unit type first!');
+      if(!units.unitType) {
+         dispatch(updateMessage('Select unit type first!'));
          return;
       }
-      setMessage(warnMessage = '');
+
+      dispatch(resetUnits());
+      dispatch(resetMessage());
       setSpinner(isLoading = true);
-      axios.get(`https://swapi.co/api/${unitType}`)
+
+      axios.get(`https://swapi.co/api/${units.unitType}`)
          .then(res => {
             const countUnits = res.data.results.length;
             const randomNum1 = Math.floor(Math.random() * countUnits);
@@ -31,21 +32,20 @@ const Battlefield = () => {
             const unit2 = res.data.results[randomNum2];
 
             dispatch(updateUnits(unit1, unit2));
-            dispatch(updateCounter(unit1, unit2, unitType));
+            dispatch(updateScore(unit1, unit2, units.unitType));
 
             setSpinner(isLoading = false);
          })
    }
 
    return (
-      <>
+      <div className="battlefield">
          { isLoading ? <CircularProgress/> : ''}
-         <OptionalMessage message={warnMessage}/>
-         <GameResult playerOne={playerOne} playerTwo={playerTwo} unitType={unitType} />
-         <CardUnit player="one" stats={playerOne} type={unitType}/>
-         <CardUnit player="two" stats={playerTwo} type={unitType}/>
+         <MessageBox message={message}/>
+         <CardUnit player="one" stats={units.playerOne} type={units.unitType}/>
+         <CardUnit player="two" stats={units.playerTwo} type={units.unitType}/>
          <Button color="secondary" variant="contained" onClick={play}>Play!</Button>
-      </>
+      </div>
    )
 }
 

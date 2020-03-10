@@ -1,9 +1,9 @@
-import { counter } from './counter';
+import { game } from './game';
 import { units } from './units';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
-    counter,
+    game,
     units
 })
 

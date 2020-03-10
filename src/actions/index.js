@@ -5,12 +5,6 @@ export const changeType = unit => {
     };
 }
 
-export const resetUnits = () => {
-    return {
-        type: 'RESET_UNITS'
-    };
-}
-
 export const updateUnits = (playerOne, playerTwo) => {
     return {
         type: 'UPDATE_UNITS',
@@ -18,12 +12,36 @@ export const updateUnits = (playerOne, playerTwo) => {
         playerTwo
     };
 }
-
-export const updateCounter = (playerOne, playerTwo, unitType) => {
+export const updateScore = (playerOne, playerTwo, unitType) => {
     return {
-        type: 'UPDATE_COUNTER',
+        type: 'UPDATE_SCORE',
         playerOne,
         playerTwo,
         unitType
+    };
+}
+
+export const updateMessage = message => {
+    return {
+        type: 'UPDATE_MESSAGE',
+        payload: message
+    };
+}
+
+export const resetUnits = () => {
+    return {
+        type: 'RESET_UNITS'
+    };
+}
+
+export const resetScore = () => {
+    return {
+        type: 'RESET_SCORE'
+    };
+}
+
+export const resetMessage = () => {
+    return {
+        type: 'RESET_MESSAGE'
     };
 }

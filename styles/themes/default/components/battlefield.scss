@@ -1,0 +1,14 @@
+.battlefield {
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .MuiPaper-root {
+        flex-basis: 50%;
+    }
+
+    .MuiButtonBase-root {
+        display: block;
+        margin: $space-standard auto;
+    }
+}
